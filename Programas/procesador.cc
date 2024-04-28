@@ -325,13 +325,10 @@ procesador::generarModeloLenguajePhishing (vocavulario& diccionarioGeneral, phis
   std::map<std::string, double> modeloLenguajePhishing;
   for (const auto& elemento : vocavulario) {
     auto iterador = vocavularioPhishing.find(elemento);
-    std::cout << elemento << std::endl;
     if (iterador != vocavularioPhishing.end()) {
       double aux = iterador->second + 1;
       aux = aux / (numPalabrasTotalesCorpus + numPalabrasVocabulario);
-      std::cout << aux << " = " << iterador->second << " + 1 / ( " << numPalabrasTotalesCorpus << " + " << numPalabrasVocabulario << " ) " << std::endl;
       aux = log(aux);
-      std::cout << "log(aux) = " << aux << std::endl;
       modeloLenguajePhishing.insert(std::pair<std::string, double>(elemento, aux));
     } else {
       double aux = 1;
